@@ -1,3 +1,4 @@
+// CREATE ROUTES TO DATABASE -----------------------------------------------
 const router = require("express").Router();
 const booksController = require("../../controllers/booksController");
 
@@ -7,8 +8,7 @@ router.route("/")
   .post(booksController.create);
 
 // Matches with "/api/books/:id"
-router
-  .route("/:id")
+router.route("/:id")
   .get(booksController.findById)
   .put(booksController.update)
   .delete(booksController.remove);

@@ -1,6 +1,5 @@
 import axios from "axios";
-
-const APIKEY = "&key=AIzaSyD3BFlOu6bSTakTRyc1FyH9kpq-FtU3FN0"; 
+import APIKEY from "../../../config/keys";
 const URL = "https://www.googleapis.com/books/v1/volumes?q=";
 
 // Export an object containing methods use for accessing googlebooks API
