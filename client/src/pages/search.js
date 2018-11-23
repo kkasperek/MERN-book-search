@@ -2,12 +2,10 @@ import React, { Component } from "react";
 import Button from "@material-ui/core/Button";
 import API from "../utils/API";
 import Container from "../components/container";
-import SearchForm from "../components/SearchForm";
 import NavBar from "../components/Navigation";
 import Wrapper from "../components/Layout";
-import SearchBox from "../components/searchBox";
-
-
+import Paper from "@material-ui/core/Paper";
+import Typography from "@material-ui/core/Typography";
 
 class Search extends Component {
   state = {
@@ -40,13 +38,17 @@ class Search extends Component {
         <NavBar />
         <Wrapper>
           <Container style={{ minHeight: "80%" }}>
-            <h1 className="text-center">Find a Book!</h1>
-            <SearchForm
-              handleFormSubmit={this.handleFormSubmit}
-              handleInputChange={this.handleInputChange}
-            />
+            <Paper  elevation={1}>
+              <Typography variant="h5" component="h3">
+                Jump into a new adventure!
+              </Typography>
+              <Typography component="p">
+                Save books to your bookshelf.
+              </Typography>
+              <h1 className="text-center">Find a Book!</h1>
+   
+            </Paper>
           </Container>
-          <SearchBox />
         </Wrapper>
       </div>
     );

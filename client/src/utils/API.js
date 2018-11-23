@@ -1,11 +1,12 @@
 import axios from "axios";
-import APIKEY from "../../../config/keys";
+import APIKEY from "../config/keys";
 const URL = "https://www.googleapis.com/books/v1/volumes?q=";
 
 // Export an object containing methods use for accessing googlebooks API
 export default {
   // Search for books
   searchBooks: (query) => {
+    //console.log(query);
     return axios.get(URL + query + APIKEY);
   },
    // Saves a book to the database
