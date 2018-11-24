@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import Button from "@material-ui/core/Button";
 import API from "../utils/API";
-import Container from "../components/container";
-import NavBar from "../components/Navigation";
-import Wrapper from "../components/Layout";
+import Container from "../components/Layout/container";
+import NavBar from "../components/Navigation/NavBar";
+import Footer from "../components/Navigation/footer";
+import Wrapper from "../components/Layout/wrapper";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 
@@ -50,6 +51,7 @@ class Search extends Component {
             </Paper>
           </Container>
         </Wrapper>
+        <Footer />
       </div>
     );
   }

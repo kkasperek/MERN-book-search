@@ -4,13 +4,15 @@ import "./pages.css";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
-import NavBar from "../components/Navigation";
-import Wrapper from "../components/Layout";
-import Container from "../components/container";
+import NavBar from "../components/Navigation/NavBar";
+import Footer from "../components/Navigation/footer";
+import Wrapper from "../components/Layout/wrapper";
+import Container from "../components/Layout/container";
 import BookCard from "../components/BookCard";
+import BookshelfCard from "../components/BookshelfCard/Card";
 import SearchForm from "../components/Search/SearchForm";
-import SearchResults from "../components/Search/SearchResults";
-//import SearchResults from "../components/Search/SearchResults";
+import AddBtn from "../components/Buttons/add-button";
+import ViewBtn from "../components/Buttons/view-button";
 
 // setting components initial state
 class Home extends Component {
@@ -22,7 +24,7 @@ class Home extends Component {
     image: "",
     link: ""
   };
-
+  componentDidMount() {}
   // Get  value and name of input which triggered change
   handleInputChange = event => {
     const { name, value } = event.target;
@@ -46,6 +48,8 @@ class Home extends Component {
           let description = book.volumeInfo.description;
           let image = book.volumeInfo.imageLinks.thumbnail;
           let link = book.selfLink;
+
+          // log to the console -----------
           console.log(`
           ${title}
           ${authors}
@@ -67,8 +71,25 @@ class Home extends Component {
       .catch(err => console.log(err));
 
     this.setState({
-      title: ""
+      title: "",
+      books: [],
+      authors: [],
+      description: "",
+      image: "",
+      link: ""
     });
+  };
+  handleOnClick = event => {
+    event.preventDefault();
+    API.saveBook({
+      title: this.state.title,
+      authors: this.state.authors,
+      description: this.state.description,
+      image: this.state.image,
+      link: this.state.link
+    })
+      .then(res => alert("Book has been added to your bookshelf!"))
+      .catch(err => console.log(err));
   };
 
   render() {
@@ -95,18 +116,45 @@ class Home extends Component {
                 Results:
               </Typography>
 
-              <BookCard
-                id={this.state.books.id}
-                key={this.state.books.id}
-                title={this.state.title}
-                authors={this.state.authors}
-                description={this.state.description}
-                image={this.state.image}
-                link={this.state.link}
-              />
+              <Container>
+                <BookshelfCard
+                  id={this.state.books.id}
+                  key={this.state.books.id}
+                  title={this.state.title}
+                  authors={this.state.authors}
+                  description={this.state.description}
+                  image={this.state.image}
+                  link={this.state.link}
+                />
+            
+                <AddBtn onClick={this.handleOnClick} />
+              </Container>
+
+              <Container>
+                <BookCard
+                  id={this.state.books.id}
+                  key={this.state.books.id}
+                  title={this.state.title}
+                  authors={this.state.authors}
+                  description={this.state.description}
+                  image={this.state.image}
+                  link={this.state.link}
+                />
+              </Container>
+
+              {/* Link Buttons */}
+              <span>
+                <Button>
+                  <AddBtn onClick={this.handleOnClick} />
+                </Button>
+                <Button>
+                  <ViewBtn href={this.props.link} />
+                </Button>
+              </span>
             </Paper>
           </Container>
         </Wrapper>
+        <Footer />
       </div>
     );
   }
