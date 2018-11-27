@@ -3,8 +3,6 @@ import Button from "@material-ui/core/Button";
 import "./pages.css";
 import API from "../utils/API";
 import Container from "../components/Layout/container";
-import NavBar from "../components/Navigation/NavBar";
-import Footer from "../components/Footer/footer";
 import Wrapper from "../components/Layout/wrapper";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
@@ -91,7 +89,6 @@ class Search extends Component {
   render() {
     return (
       <div>
-        <NavBar />
         <Wrapper>
           <Container style={{ minHeight: "80%" }}>
             <Typography id="pageTitle" variant="h4" component="h3">
@@ -111,7 +108,7 @@ class Search extends Component {
             />
           </Container>
         </Wrapper>
-        <Footer />
+   
       </div>
     );
   }

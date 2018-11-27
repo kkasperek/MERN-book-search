@@ -4,8 +4,6 @@ import "./pages.css";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
-import NavBar from "../components/Navigation/NavBar";
-import Footer from "../components/Footer/footer";
 import Wrapper from "../components/Layout/wrapper";
 import Container from "../components/Layout/container";
 import BookCard from "../components/Card/BookCard";
@@ -78,7 +76,7 @@ class Home extends Component {
   render() {
     return (
       <div>
-        <NavBar />
+
         <Wrapper>
           <h1>Search For A New Book!</h1>
           <Container>
@@ -110,7 +108,7 @@ class Home extends Component {
 
             
         </Wrapper>
-        <Footer />
+
       </div>
     );
   }
