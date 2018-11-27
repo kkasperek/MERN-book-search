@@ -8,23 +8,21 @@ import NavBar from "../components/Navigation/NavBar";
 import Footer from "../components/Navigation/footer";
 import Wrapper from "../components/Layout/wrapper";
 import Container from "../components/Layout/container";
-import BookCard from "../components/BookCard";
-import BookshelfCard from "../components/BookshelfCard/Card";
+import BookCard from "../components/Card/BookCard";
 import SearchForm from "../components/Search/SearchForm";
-import AddBtn from "../components/Buttons/add-button";
-import ViewBtn from "../components/Buttons/view-button";
+import SearchResults from "../components/SearchResults";
 
 // setting components initial state
 class Home extends Component {
-  state = {
-    title: "",
-    books: [],
-    authors: [],
-    description: "",
-    image: "",
-    link: ""
-  };
-  componentDidMount() {}
+ constructor(props){
+   super(props);
+   this.state ={
+     books: []
+   }
+ }
+  componentDidMount() {
+
+  }
   // Get  value and name of input which triggered change
   handleInputChange = event => {
     const { name, value } = event.target;
@@ -36,7 +34,7 @@ class Home extends Component {
   handleFormSubmit = event => {
     event.preventDefault();
 
-    API.searchBooks(this.state.title)
+    API.searchBooks(this.state.search)
       .then(res => {
         let books = res.data.items;
         console.log(books);
@@ -48,15 +46,6 @@ class Home extends Component {
           let description = book.volumeInfo.description;
           let image = book.volumeInfo.imageLinks.thumbnail;
           let link = book.selfLink;
-
-          // log to the console -----------
-          console.log(`
-          ${title}
-          ${authors}
-          ${image}
-          ${link}
-          ${description}
-          `);
 
           this.setState({
             books: books,
@@ -70,15 +59,9 @@ class Home extends Component {
       })
       .catch(err => console.log(err));
 
-    this.setState({
-      title: "",
-      books: [],
-      authors: [],
-      description: "",
-      image: "",
-      link: ""
-    });
   };
+
+  // Save book
   handleOnClick = event => {
     event.preventDefault();
     API.saveBook({
@@ -105,32 +88,15 @@ class Home extends Component {
               title={this.state.title}
             />
           </Container>
+          <SearchResults books={this.state.books} />
 
-          <div>
-            <h3>{this.state.title}</h3>
-          </div>
-
-          <Container>
+          {/* <Container>
             <Paper id="searchResults" className={this.root} elevation={1}>
               <Typography variant="h5" component="h3">
                 Results:
-              </Typography>
+              </Typography> */}
 
-              <Container>
-                <BookshelfCard
-                  id={this.state.books.id}
-                  key={this.state.books.id}
-                  title={this.state.title}
-                  authors={this.state.authors}
-                  description={this.state.description}
-                  image={this.state.image}
-                  link={this.state.link}
-                />
-            
-                <AddBtn onClick={this.handleOnClick} />
-              </Container>
-
-              <Container>
+            <Container>
                 <BookCard
                   id={this.state.books.id}
                   key={this.state.books.id}
@@ -140,19 +106,9 @@ class Home extends Component {
                   image={this.state.image}
                   link={this.state.link}
                 />
-              </Container>
+              </Container> 
 
-              {/* Link Buttons */}
-              <span>
-                <Button>
-                  <AddBtn onClick={this.handleOnClick} />
-                </Button>
-                <Button>
-                  <ViewBtn href={this.props.link} />
-                </Button>
-              </span>
-            </Paper>
-          </Container>
+            
         </Wrapper>
         <Footer />
       </div>

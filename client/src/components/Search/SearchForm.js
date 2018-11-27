@@ -2,6 +2,7 @@ import React from "react";
 import { withStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
+import "./search.css";
 
 const styles = theme => ({
   container: {
@@ -21,12 +22,12 @@ const styles = theme => ({
 });
 const SearchForm = props => {
   return (
-    <div>
+    <div className="formContainer">
       <form className={props.container} noValidate autoComplete="off">
         <TextField
-          name="title"
-          value={props.title}
-          onChange={props.handleInputChange}
+          name="searchTerm"
+          value={props.search}
+          onChange={props.handleSearchInput}
           id="outlined-search"
           label="Search for a book..."
           type="search"
@@ -34,8 +35,8 @@ const SearchForm = props => {
           margin="normal"
           variant="outlined"
         />
-        <div>
-          <Button variant="outlined" 
+        <div className="btnContainer">
+          <Button id="formBtn" variant="outlined" 
             onClick={props.handleFormSubmit}
             className={props.button}
           >
@@ -47,43 +48,3 @@ const SearchForm = props => {
   );
 };
 export default withStyles(styles)(SearchForm);
-
-// class searchBox extends Component {
-//   state = {
-//     name: "",
-//     value: ""
-//   };
-
-//   render() {
-//     const { classes } = this.props;
-
-//     return (
-//       <div>
-//         <form className={classes.container} noValidate autoComplete="off">
-//           <TextField
-//             name="bookTitle"
-//             value={this.state.title}
-//             onChange={this.handleInputChange}
-//             id="outlined-search"
-//             label="Search for a book..."
-//             type="search"
-//             className={classes.textField}
-//             margin="normal"
-//             variant="outlined"
-//           />
-//           <div>
-//             <Button variant="outlined" className={classes.button}>
-//               Submit
-//             </Button>
-//           </div>
-//         </form>
-//       </div>
-//     );
-//   }
-// }
-
-// searchBox.propTypes = {
-//   classes: PropTypes.object.isRequired
-// };
-
-// export default withStyles(styles)(searchBox);

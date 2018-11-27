@@ -3,3 +3,7 @@
     padding: 20px;
     min-height: 100px;
 }
+#pageTitle {
+    margin-top: 30px;
+    text-align: center;
+}

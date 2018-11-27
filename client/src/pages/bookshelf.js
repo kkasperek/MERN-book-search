@@ -5,8 +5,7 @@ import Container from "../components/Layout/container";
 import NavBar from "../components/Navigation/NavBar";
 import Footer from "../components/Navigation/footer";
 import Wrapper from "../components/Layout/wrapper";
-import BookshelfCard from "../components/BookshelfCard/Card";
-import DeleteBtn from "../components/Buttons/delete-button";
+import BookCard from "../components/Card";
 
 class Bookshelf extends Component {
   state = {
@@ -50,12 +49,12 @@ class Bookshelf extends Component {
           <h1>The Bookshelf</h1>
 
           <Button variant="contained" color="primary" href="/search">
-            Click to go to other page ...
+            Click to go to search page ...
           </Button>
 
           <Container>
             {this.state.books.map(book => (
-              <BookshelfCard
+              <BookCard
                 id={book._id}
                 key={book._id}
                 title={book.title}
@@ -65,7 +64,9 @@ class Bookshelf extends Component {
                 link={book.link}
               />
             ))}
-            <DeleteBtn onClick={this.deleteBook()} />
+            <Button onClick={this.deleteBook()} >
+              Delete
+            </Button>
           </Container>
 
           <Container />
