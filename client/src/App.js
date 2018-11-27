@@ -7,7 +7,7 @@ import Search from "./pages/search";
 const App = () => (
   <Router>
     <div>
-      <Route exact path="/" component={Home} />
+      <Route exact path="/" component={Search} />
       <Route exact path="/bookshelf" component={Bookshelf} />
       <Route exact path="/search" component={Search} />
 

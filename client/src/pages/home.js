@@ -5,7 +5,7 @@ import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import NavBar from "../components/Navigation/NavBar";
-import Footer from "../components/Navigation/footer";
+import Footer from "../components/Footer/footer";
 import Wrapper from "../components/Layout/wrapper";
 import Container from "../components/Layout/container";
 import BookCard from "../components/Card/BookCard";

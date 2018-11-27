@@ -4,7 +4,7 @@ import "./pages.css";
 import API from "../utils/API";
 import Container from "../components/Layout/container";
 import NavBar from "../components/Navigation/NavBar";
-import Footer from "../components/Navigation/footer";
+import Footer from "../components/Footer/footer";
 import Wrapper from "../components/Layout/wrapper";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";

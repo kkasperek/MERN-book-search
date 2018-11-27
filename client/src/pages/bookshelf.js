@@ -3,7 +3,7 @@ import API from "../utils/API";
 import Button from "@material-ui/core/Button";
 import Container from "../components/Layout/container";
 import NavBar from "../components/Navigation/NavBar";
-import Footer from "../components/Navigation/footer";
+import Footer from "../components/Footer/footer";
 import Wrapper from "../components/Layout/wrapper";
 import BookCard from "../components/Card";
 

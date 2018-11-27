@@ -1,2 +1,1 @@
-export * from "./NavBar";
-export * from "./footer";
+export {default} from "./NavBar";
