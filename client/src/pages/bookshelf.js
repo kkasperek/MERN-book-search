@@ -7,7 +7,6 @@ import BookCard from "../components/Card";
 
 class Bookshelf extends Component {
   state = {
-    id:"",
     title: "",
     books: [],
     authors: [],
@@ -30,13 +29,10 @@ class Bookshelf extends Component {
       })
       .catch(err => console.log(err));
   };
-  deleteBook = () => {
-    API.deleteBook(this.state.id)
-      .then(res => {
-        console.log(res.state.id);
-        
-        //alert("Book has been removed!");
-      })
+  removeBook = (id) => {
+    API.deleteBook(id)
+      .then(res => alert("Book has been removed!"))
+      .then(res => this.loadBooks())
       .catch(err => console.log(err));
   };
   render() {
@@ -58,13 +54,13 @@ class Bookshelf extends Component {
                 title={book.title}
                 authors={book.authors}
                 description={book.description}
+                synopsis={book.synopsis}
                 image={book.image}
                 link={book.link}
-              />
+              >
+                <button onClick={() => this.removeBook(book._id)} > Delete </button>
+              </BookCard>
             ))}
-            {/* <Button onClick={this.deleteBook()} >
-              Delete
-            </Button> */}
           </Container>
 
           <Container />
